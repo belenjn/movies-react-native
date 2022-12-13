@@ -3,9 +3,9 @@
 export interface MovieDBNowPlaying {
   dates: Dates;
   page: number;
-  Movies: Movie[];
+  results: Movie[];
   total_pages: number;
-  total_Movies: number;
+  total_results: number;
 }
 
 export interface Dates {
