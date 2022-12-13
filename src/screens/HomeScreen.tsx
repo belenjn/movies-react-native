@@ -20,7 +20,7 @@ export const HomeScreen = () => {
 
   return (
     <View style={{marginTop: top + 20}}>
-      <MovieCard />
+      <MovieCard movie={moviesInCinema[0]} />
     </View>
   );
 };
