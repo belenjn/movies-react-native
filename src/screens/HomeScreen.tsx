@@ -1,14 +1,19 @@
-import React, {useEffect} from 'react';
-import {Text, View} from 'react-native';
-import movieDB from '../api/movieDB';
-import {MovieDBNowPlaying} from '../interfaces/movieInterface';
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React from 'react';
+import {ActivityIndicator, Text, View} from 'react-native';
+import {useMovies} from '../hooks/useMovies';
 
 export const HomeScreen = () => {
-  useEffect(() => {
-    movieDB.get<MovieDBNowPlaying>('/now_playing').then(resp => {
-      console.log(resp.data.results[0].title);
-    });
-  }, []);
+  const {moviesInCinema, isLoading} = useMovies();
+
+  if (isLoading) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <ActivityIndicator color="blue" size={20} />
+      </View>
+    );
+  }
 
   return (
     <View>
