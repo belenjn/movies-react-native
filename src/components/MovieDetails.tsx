@@ -25,6 +25,14 @@ export const MovieDetails = ({fullMovie, cast}: Props) => {
             - {fullMovie.genres.map(genre => genre.name).join(', ')}
           </Text>
         </View>
+        <Text style={{fontSize: 20, marginTop: 10, fontWeight: 'bold'}}>
+          Overview
+        </Text>
+        <Text style={{fontSize: 16}}>{fullMovie.overview}</Text>
+        <Text style={{fontSize: 20, marginTop: 10, fontWeight: 'bold'}}>
+          Budget
+        </Text>
+        <Text style={{fontSize: 16}}>{fullMovie.budget}</Text>
       </View>
     </>
   );

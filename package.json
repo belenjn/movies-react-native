@@ -15,6 +15,7 @@
     "@react-navigation/stack": "^6.3.9",
     "add": "^2.0.6",
     "axios": "^1.2.1",
+    "currency-formatter": "^1.5.9",
     "deprecated-react-native-prop-types": "^3.0.1",
     "react": "18.1.0",
     "react-native": "0.70.6",
