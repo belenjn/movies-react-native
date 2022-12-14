@@ -4,7 +4,6 @@ import React from 'react';
 import {
   ActivityIndicator,
   Dimensions,
-  FlatList,
   ScrollView,
   Text,
   View,
@@ -18,7 +17,7 @@ import {HorizontalSlider} from '../components/HorizontalSlider';
 const {width: windowWidth} = Dimensions.get('window');
 
 export const HomeScreen = () => {
-  const {moviesInCinema, isLoading} = useMovies();
+  const {nowPlaying, popular, topRated, upComing, isLoading} = useMovies();
   const {top} = useSafeAreaInsets();
 
   if (isLoading) {
@@ -38,7 +37,7 @@ export const HomeScreen = () => {
             height: 440,
           }}>
           <Carousel
-            data={moviesInCinema}
+            data={nowPlaying}
             renderItem={({item}: any) => <MovieCard movie={item} />}
             sliderWidth={windowWidth}
             itemWidth={300}
@@ -46,7 +45,9 @@ export const HomeScreen = () => {
           />
         </View>
         {/* Peliculas populares */}
-        <HorizontalSlider title="In cinema" movies={moviesInCinema} />
+        <HorizontalSlider title="Popular movies" movies={popular} />
+        <HorizontalSlider title="Top rated" movies={topRated} />
+        <HorizontalSlider title="Up coming" movies={upComing} />
       </View>
     </ScrollView>
   );
