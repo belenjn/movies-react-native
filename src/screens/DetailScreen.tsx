@@ -15,7 +15,7 @@ export const DetailScreen = ({navigation, route}: Props) => {
   const movie = route.params;
   const uri: string = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
 
-  useMovieDetails(movie.id);
+  const {isLoading, cast, fullMovie} = useMovieDetails(movie.id);
 
   return (
     <ScrollView>
