@@ -1,11 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {StackScreenProps} from '@react-navigation/stack';
 import React from 'react';
-import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
+import {
+  ActivityIndicator,
+  Dimensions,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {RootStackParams} from '../navigaton/Navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useMovieDetails} from '../hooks/useMovieDetails';
+import {MovieDetails} from '../components/MovieDetails';
 
 interface Props extends StackScreenProps<RootStackParams, 'Details'> {}
 
@@ -35,9 +43,11 @@ export const DetailScreen = ({navigation, route}: Props) => {
           <Text style={styles.title}>{movie.title}</Text>
         </View>
 
-        <View style={styles.marginContainer}>
-          <Icon name="star-outline" color="grey" size={20} />
-        </View>
+        {isLoading ? (
+          <ActivityIndicator size={30} color="blue" />
+        ) : (
+          <MovieDetails fullMovie={fullMovie!} cast={cast} />
+        )}
       </View>
     </ScrollView>
   );
