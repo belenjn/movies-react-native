@@ -21,7 +21,6 @@ export const HomeScreen = () => {
 
   return (
     <View style={{marginTop: top + 20}}>
-      {/* <MovieCard movie={moviesInCinema[0]} /> */}
       <Carousel
         data={moviesInCinema}
         renderItem={() => <MovieCard movie={moviesInCinema[0]} />}
