@@ -15,7 +15,7 @@ export const HorizontalSlider = ({title, movies}: Props) => {
       style={{
         height: 270,
       }}>
-      <Text style={{fontSize: 30, fontWeight: 'bold'}}>{title}</Text>
+      {title && <Text style={{fontSize: 30, fontWeight: 'bold'}}>{title}</Text>}
       <FlatList
         data={movies}
         renderItem={({item}: any) => (
