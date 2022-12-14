@@ -16,12 +16,14 @@ export const DetailScreen = ({navigation, route}: Props) => {
   return (
     <ScrollView>
       <View style={styles.imageContainer}>
-        <Image
-          source={{
-            uri,
-          }}
-          style={styles.posterImage}
-        />
+        <View style={styles.imageBorder}>
+          <Image
+            source={{
+              uri,
+            }}
+            style={styles.posterImage}
+          />
+        </View>
       </View>
       <View>
         <View style={styles.marginContainer}>
@@ -37,7 +39,6 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: '100%',
     height: screenHeight * 0.7,
-    overflow: 'hidden',
     shadowColor: '#000',
     shadowOffset: {
       width: 2,
@@ -46,6 +47,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 10,
+    borderBottomEndRadius: 25,
+    borderBottomStartRadius: 25,
+  },
+  imageBorder: {
+    flex: 1,
+    overflow: 'hidden',
     borderBottomEndRadius: 25,
     borderBottomStartRadius: 25,
   },
