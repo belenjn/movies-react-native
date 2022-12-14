@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Movie} from '../interfaces/movieInterface';
 
 interface Props {
@@ -12,13 +14,16 @@ interface Props {
 
 export const MovieCard = ({movie, height = 420, width = 300}: Props) => {
   const uri: string = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+  const navigation = useNavigation();
   return (
-    <View
+    <TouchableOpacity
+      onPress={() => navigation.navigate('Details', movie)}
       style={{
         width,
         height,
         marginHorizontal: 8,
-      }}>
+      }}
+      activeOpacity={0.8}>
       <View style={styles.imageContainer}>
         <Image
           source={{
@@ -27,7 +32,7 @@ export const MovieCard = ({movie, height = 420, width = 300}: Props) => {
           style={styles.image}
         />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
