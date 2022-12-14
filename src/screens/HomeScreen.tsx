@@ -5,6 +5,7 @@ import {
   ActivityIndicator,
   Dimensions,
   FlatList,
+  ScrollView,
   Text,
   View,
 } from 'react-native';
@@ -12,6 +13,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {MovieCard} from '../components/MovieCard';
 import {useMovies} from '../hooks/useMovies';
 import Carousel from 'react-native-snap-carousel';
+import {HorizontalSlider} from '../components/HorizontalSlider';
 
 const {width: windowWidth} = Dimensions.get('window');
 
@@ -28,35 +30,23 @@ export const HomeScreen = () => {
   }
 
   return (
-    <View style={{marginTop: top + 20}}>
-      {/* Carousel */}
-      <View
-        style={{
-          height: 440,
-        }}>
-        <Carousel
-          data={moviesInCinema}
-          renderItem={({item}: any) => <MovieCard movie={item} />}
-          sliderWidth={windowWidth}
-          itemWidth={300}
-        />
+    <ScrollView>
+      <View style={{marginTop: top + 20}}>
+        {/* Carousel */}
+        <View
+          style={{
+            height: 440,
+          }}>
+          <Carousel
+            data={moviesInCinema}
+            renderItem={({item}: any) => <MovieCard movie={item} />}
+            sliderWidth={windowWidth}
+            itemWidth={300}
+          />
+        </View>
+        {/* Peliculas populares */}
+        <HorizontalSlider title="In cinema" movies={moviesInCinema} />
       </View>
-      {/* Peliculas populares */}
-      <View
-        style={{
-          height: 250,
-        }}>
-        <Text style={{fontSize: 30, fontWeight: 'bold'}}>In cinema</Text>
-        <FlatList
-          data={moviesInCinema}
-          renderItem={({item}: any) => (
-            <MovieCard movie={item} height={200} width={140} />
-          )}
-          keyExtractor={item => item.id.toString()}
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-        />
-      </View>
-    </View>
+    </ScrollView>
   );
 };
