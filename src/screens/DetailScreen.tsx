@@ -7,6 +7,7 @@ import {
   Image,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -14,6 +15,7 @@ import {RootStackParams} from '../navigaton/Navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useMovieDetails} from '../hooks/useMovieDetails';
 import {MovieDetails} from '../components/MovieDetails';
+import {useNavigation} from '@react-navigation/native';
 
 interface Props extends StackScreenProps<RootStackParams, 'Details'> {}
 
@@ -49,6 +51,11 @@ export const DetailScreen = ({navigation, route}: Props) => {
           <MovieDetails fullMovie={fullMovie!} cast={cast} />
         )}
       </View>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Home')}
+        style={styles.backButton}>
+        <Icon color="white" name="arrow-back-outline" size={30} />
+      </TouchableOpacity>
     </ScrollView>
   );
 };
@@ -88,5 +95,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  backButton: {
+    position: 'absolute',
+    zIndex: 999,
+    elevation: 9,
+    top: 30,
+    left: 10,
   },
 });
