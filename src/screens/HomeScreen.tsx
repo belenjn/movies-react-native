@@ -29,6 +29,12 @@ export const HomeScreen = () => {
     );
   }
 
+  const getPosterColors = (index: number) => {
+    const movie = nowPlaying[index];
+    const uri: string = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+    console.log(uri);
+  };
+
   return (
     <GradientBackground>
       <ScrollView>
@@ -44,6 +50,7 @@ export const HomeScreen = () => {
               sliderWidth={windowWidth}
               itemWidth={300}
               inactiveSlideOpacity={0.9}
+              onSnapToItem={index => getPosterColors(index)}
             />
           </View>
           {/* Peliculas populares */}

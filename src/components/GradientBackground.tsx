@@ -13,7 +13,10 @@ export const GradientBackground = ({children}: Props) => {
       <LinearGradient
         colors={['#084f6a', '#75cedb', 'white']}
         style={{...StyleSheet.absoluteFillObject}}
+        start={{x: 0.1, y: 0.1}}
+        end={{x: 0.5, y: 0.7}}
       />
+      {children}
     </View>
   );
 };
