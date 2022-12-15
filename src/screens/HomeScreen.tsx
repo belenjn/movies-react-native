@@ -17,6 +17,7 @@ import {HorizontalSlider} from '../components/HorizontalSlider';
 import {GradientBackground} from '../components/GradientBackground';
 import {getImageColors} from '../helpers/getColors';
 import {GradientContext} from '../context/GradientContext';
+import {useEffect} from 'react';
 
 const {width: windowWidth} = Dimensions.get('window');
 
@@ -25,6 +26,12 @@ export const HomeScreen = () => {
   const {top} = useSafeAreaInsets();
 
   const {setMainColors} = useContext(GradientContext);
+
+  // useEffect(() => {
+  //   if (nowPlaying.length > 0) {
+  //     getPosterColors(0);
+  //   }
+  // }, [nowPlaying,]);
 
   if (isLoading) {
     return (
