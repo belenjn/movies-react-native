@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   ActivityIndicator,
   Dimensions,
@@ -15,12 +16,15 @@ import Carousel from 'react-native-snap-carousel';
 import {HorizontalSlider} from '../components/HorizontalSlider';
 import {GradientBackground} from '../components/GradientBackground';
 import {getImageColors} from '../helpers/getColors';
+import {GradientContext} from '../context/GradientContext';
 
 const {width: windowWidth} = Dimensions.get('window');
 
 export const HomeScreen = () => {
   const {nowPlaying, popular, topRated, upComing, isLoading} = useMovies();
   const {top} = useSafeAreaInsets();
+
+  const {setMainColors} = useContext(GradientContext);
 
   if (isLoading) {
     return (
@@ -33,7 +37,10 @@ export const HomeScreen = () => {
   const getPosterColors = async (index: number) => {
     const movie = nowPlaying[index];
     const uri: string = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
-    const [primary, secondary] = await getImageColors(uri);
+
+    const [primary = 'black', secondary = 'grey'] = await getImageColors(uri);
+
+    setMainColors({primary, secondary});
   };
 
   return (
