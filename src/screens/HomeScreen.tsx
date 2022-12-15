@@ -14,6 +14,7 @@ import {useMovies} from '../hooks/useMovies';
 import Carousel from 'react-native-snap-carousel';
 import {HorizontalSlider} from '../components/HorizontalSlider';
 import {GradientBackground} from '../components/GradientBackground';
+import {getImageColors} from '../helpers/getColors';
 
 const {width: windowWidth} = Dimensions.get('window');
 
@@ -29,10 +30,10 @@ export const HomeScreen = () => {
     );
   }
 
-  const getPosterColors = (index: number) => {
+  const getPosterColors = async (index: number) => {
     const movie = nowPlaying[index];
     const uri: string = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
-    console.log(uri);
+    const [primary, secondary] = await getImageColors(uri);
   };
 
   return (
